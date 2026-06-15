@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система Управления Богданоландией</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="terminal-container">
+        <!-- Верхняя инфо-панель -->
+        <div class="top-bar">
+            <span class="system-status">СТАТУС: АКТИВЕН</span>
+            <button id="lang-toggle" onclick="toggleLanguage()">Язык: РУ</button>
+        </div>
+
+        <header>
+            <h1 id="main-title">ГОСУДАРСТВЕННЫЙ ТЕРМИНАЛ</h1>
+            <p id="main-subtitle">ЦЕНТРАЛЬНАЯ СИСТЕМА УПРАВЛЕНИЯ ЦИФРОВЫМ ГОСУДАРСТВОМ</p>
+        </header>
+
+        <!-- Навигационное меню -->
+        <div class="nav-bar">
+            <button class="nav-btn active" id="btn-passport" onclick="openTab('tab-passport')">Паспорт</button>
+            <button class="nav-btn" id="btn-economy" onclick="openTab('tab-economy')">Экономика</button>
+            <button class="nav-btn" id="btn-laws" onclick="openTab('tab-laws')">Законы</button>
+            <button class="nav-btn" id="btn-infrastructure" onclick="openTab('tab-infrastructure')">Инфраструктура</button>
+            <button class="nav-btn" id="btn-tribunal" onclick="openTab('tab-tribunal')">Трибунал</button>
+        </div>
+
+        <!-- Вкладка: ПАСПОРТ И ВЛАСТЬ -->
+        <div id="tab-passport" class="tab-content active">
+            <h2 id="title-gov">Государственное Управление</h2>
+            <div class="info-box gov-box">
+                <p>👑 <strong id="txt-pres">Президент:</strong> Богдан (Глава государства)</p>
+                <p>🛡️ <strong id="txt-vice">Вице-президент:</strong> Семён (Доверенное лицо, куратор Семеновска)</p>
+            </div>
+
+            <h2 id="title-passport">Цифровой ID Гражданина</h2>
+            <div class="id-card">
+                <canvas id="passport-canvas" width="300" height="150"></canvas>
+                <div id="camera-container">
+                    <div class="camera-overlay" id="txt-scanning">Ожидание биометрии...</div>
+                </div>
+                <button class="action-btn" id="btn-tiktok">Привязать профиль TikTok</button>
+            </div>
+        </div>
+
+        <!-- Вкладка: ЭКОНОМИКА -->
+        <div id="tab-economy" class="tab-content">
+            <h2 id="title-economy">Государственная Экономика</h2>
+            <div class="info-box">
+                <h3><span id="txt-treasury">Казна Государства</span>: <span id="treasury">1000</span> <span id="txt-currency">Железа</span></h3>
+                <button class="action-btn" id="btn-taxes" onclick="payTaxes()">Собрать налог (10 железа)</button>
+            </div>
+            
+            <div class="info-box">
+                <h3 id="title-orders">Госзаказы (Столичный округ Богдановск)</h3>
+                <div class="order-item">
+                    <p id="txt-order-1">1. Сбор ресурсов: 64 булыжника для расширения главного здания мэрии.</p>
+                    <button class="action-btn" id="btn-complete-order" onclick="completeOrder()">Сдать ресурсы</button>
+                </div>
+            </div>
+            
+            <div class="info-box alert-box">
+                <h3 id="title-debtors">Инспекционный контроль (Индустриальный центр Семеновск)</h3>
+                <ul id="debtors-list">
+                    <li>Игрок123 — Нарушение территориальных границ столичного региона.</li>
+                    <li>Крипер555 — Нанесение ущерба ландшафту и инфраструктуре.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Вкладка: ЗАКОНЫ -->
+        <div id="tab-laws" class="tab-content">
+            <h2 id="title-laws">Свод Основных Законов (7 Правил)</h2>
+            <div class="info-box">
+                <ol class="laws-list">
+                    <li><strong>Закон I:</strong> Высшее руководство и управление делами государства осуществляется Президентом и Вице-президентом.</li>
+                    <li><strong>Закон II:</strong> Каждый зарегистрированный гражданин обязан выплачивать обязательный налог в размере 10 единиц железа.</li>
+                    <li><strong>Закон III:</strong> Любое несанкционированное уничтожение или изменение чужих построек (гриферство) влечет за собой немедленный Трибунал.</li>
+                    <li><strong>Закон IV:</strong> Город Семеновск официально закреплен как главный индустриальный сектор. Любой саботаж производства запрещен.</li>
+                    <li><strong>Закон V:</strong> Граждане обязаны принимать участие в выполнении стратегических госзаказов для развития инфраструктуры.</li>
+                    <li><strong>Закон VI:</strong> Нарушение границ охраняемых зон или частных владений без разрешения карается изъятием найденных ресурсов.</li>
+                    <li><strong>Закон VII:</strong> Систематическое уклонение от налогов или невыполнение решений суда ведет к занесению на Доску Инспекции и ограничению свободы.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Вкладка: ИНФРАСТРУКТУРА -->
+        <div id="tab-infrastructure" class="tab-content">
+            <h2 id="title-infra">Инженерные Системы</h2>
+            <div class="info-box">
+                <h3 id="title-mobfarm">Технический расчет ферм мобов</h3>
+                <p id="txt-mobfarm-desc">Автоматический расчет оптимальной высоты падения существ и вычисление шанса появления редких зомби в полной броне.</p>
+                <button class="action-btn" id="btn-calc-farm" onclick="calcFarm()">Запустить симуляцию</button>
+            </div>
+        </div>
+
+        <!-- Вкладка: ТРИБУНАЛ -->
+        <div id="tab-tribunal" class="tab-content">
+            <h2 id="title-tribunal">Государственный Суд</h2>
+            <div class="info-box tribunal-box">
+                <p id="txt-tribunal-desc">Модуль изоляции нарушителей правопорядка и злостных должников казны.</p>
+                <input type="text" id="suspectInput" placeholder="Введите никнейм игрока...">
+                <button class="action-btn danger-btn" id="btn-arrest" onclick="sendToPrison()">Конвоировать в тюрьму</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
