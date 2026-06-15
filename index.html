@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Терминал Богданоландии</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="terminal-container">
+        <header>
+            <h1>ГОСУДАРСТВЕННЫЙ ТЕРМИНАЛ</h1>
+            <p>СИСТЕМА УПРАВЛЕНИЯ БОГДАНОЛАНДИЕЙ</p>
+        </header>
+
+        <div class="nav-bar">
+            <button class="nav-btn active" onclick="openTab('tab-passport')">Паспорт</button>
+            <button class="nav-btn" onclick="openTab('tab-economy')">Экономика</button>
+            <button class="nav-btn" onclick="openTab('tab-tribunal')">Трибунал</button>
+        </div>
+
+        <div id="tab-passport" class="tab-content active">
+            <h2>Цифровой ID</h2>
+            <div class="id-card">
+                <canvas id="passport-canvas" width="300" height="150"></canvas>
+                <div id="camera-container">
+                    <video id="video-preview" autoplay playsinline></video>
+                    <div class="camera-overlay">Сканирование лица...</div>
+                </div>
+                <button class="action-btn tiktok-btn">Привязать TikTok/Соцсети</button>
+            </div>
+        </div>
+
+        <div id="tab-economy" class="tab-content">
+            <div class="stats-box">
+                <h3>Казна: <span id="treasury">1000</span> АР (Алмазных Руды)</h3>
+                <button class="action-btn" onclick="payTaxes()">Собрать налоги</button>
+            </div>
+            
+            <div class="stats-box">
+                <h3>Госзаказы</h3>
+                <div class="order-item">
+                    <p>1. Добыть 64 камня для постройки новой мэрии</p>
+                    <button class="action-btn" onclick="completeOrder()">Выполнить</button>
+                </div>
+            </div>
+            
+            <div class="stats-box alert-box">
+                <h3>Доска Инспекции (Должники)</h3>
+                <ul id="debtors-list">
+                    <li>Семён — Долг: 15 железа (Статус: В розыске)</li>
+                    <li>Игрок123 — Нарушение границ</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="tab-tribunal" class="tab-content">
+            <div class="tribunal-box">
+                <h2>СУДЕБНАЯ СИСТЕМА</h2>
+                <p>Вынести приговор нарушителю сервера.</p>
+                <input type="text" id="suspectInput" placeholder="Ник игрока...">
+                <button class="action-btn danger-btn">Отправить в тюрьму</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
